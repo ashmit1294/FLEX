@@ -1,10 +1,13 @@
-import { useState } from 'react'
+import React,{ useState } from 'react'
+import LoginForm from './LoginForm';
+import { useNavigate } from "react-router-dom"; 
 
 const RegistrationForm = () => {
   const [password, setPassword] = useState('');
-  const [strength, setStrength] = useState(0);
   const [error, setError] = useState('');
-  const [showStrength, setShowStrength] = useState(false)
+  const [strength, setStrength] = useState(0);
+  const [showStrength, setShowStrength] = useState(false);
+  
 
   const checkPasswordStrength = (pass) => {
     let score = 0
@@ -24,6 +27,12 @@ const RegistrationForm = () => {
     return 'Strong'
   }
 
+  const navigate = useNavigate();
+
+const handleLogin = () => {
+  navigate('/login'); // Navigate to the login route
+};
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-[url('/nature.jpg')] bg-cover bg-center bg-no-repeat">
       <div className="w-2/3 flex items-center justify-center">
@@ -37,19 +46,11 @@ const RegistrationForm = () => {
         <div className="backdrop-blur-sm bg-white/10 p-8 rounded-lg shadow-xl w-96">
         <form className="space-y-4">
           <div className="transform hover:scale-105 transition-transform">
-            <label className="block text-white font-semibold drop-shadow-lg">First Name</label>
+          <label className="block text-white font-semibold drop-shadow-lg">Name</label>
             <input
               type="text"
-              className="w-full px-4 py-2 rounded-lg border bg-transparent  focus:outline-none focus:ring-2 focus:ring-white/50"
-              required
-            />
-          </div>
-
-          <div className="transform hover:scale-105 transition-transform">
-            <label className="block text-white font-semibold drop-shadow-lg">Last Name</label>
-            <input
-              type="text"
-              className="w-full px-4 py-2 rounded-lg border bg-transparent  focus:outline-none focus:ring-2 focus:ring-white/50"
+              placeholder='Name'
+              className="w-full px-4 py-2 rounded-lg border bg-transparent text-white focus:outline-none focus:ring-2 focus:ring-white/50"
               required
             />
           </div>
@@ -58,7 +59,7 @@ const RegistrationForm = () => {
             <label className="block text-white font-semibold drop-shadow-lg">Email</label>
             <input
               type="email"
-              className="w-full px-4 py-2 rounded-lg border bg-transparent  focus:outline-none focus:ring-2 focus:ring-white/50"
+              className="w-full px-4 py-2 rounded-lg border bg-transparent text-white focus:outline-none focus:ring-2 focus:ring-white/50"
               required
             />
           </div>
@@ -67,7 +68,7 @@ const RegistrationForm = () => {
             <label className="block text-white font-semibold drop-shadow-lg">Phone</label>
             <input
               type="tel"
-              className="w-full px-4 py-2 rounded-lg border bg-transparent  focus:outline-none focus:ring-2 focus:ring-white/50"
+              className="w-full px-4 py-2 rounded-lg border bg-transparent text-white focus:outline-none focus:ring-2 focus:ring-white/50"
               required
             />
           </div>
@@ -76,7 +77,7 @@ const RegistrationForm = () => {
               <label className="block text-white font-semibold drop-shadow-lg">Password</label>
               <input
                 type="password"
-                className="w-full px-4 py-2 rounded-lg border bg-transparent  focus:outline-none focus:ring-2 focus:ring-white/50"
+                className="w-full px-4 py-2 rounded-lg border bg-transparent text-white focus:outline-none focus:ring-2 focus:ring-white/50"
                 onClick={()=>setShowStrength(true)}
                 onChange={(e) => {
                   setPassword(e.target.value)
@@ -113,11 +114,13 @@ const RegistrationForm = () => {
               Sign Up
             </button>
             <button
-              type="submit"
+              onClick={handleLogin}
+              type="button" // Add this to prevent form submission
               className="w-[50%] bg-black/20 text-white py-2 rounded-lg hover:bg-black/50 transition-all transform hover:scale-105 font-semibold backdrop-blur-sm"
             >
               Log In
             </button>
+
           </form>
         </div>
       </div>

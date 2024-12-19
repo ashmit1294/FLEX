@@ -1,12 +1,13 @@
-import RegistrationForm from "./Pages/RegistrationForms"
+import { Routes, Route } from 'react-router-dom';
+import RegistrationForm from './Pages/RegistrationForms';
+import LoginForm from './Pages/LoginForm';
 
-const App=()=> {
-
+const App = () => {
   return (
-    <>
-    <RegistrationForm />
-    </>
-  )
+    <Routes>
+      <Route path="/" element={<RegistrationForm />} />
+      <Route path="/login" element={<LoginForm />} />
+    </Routes>
+  );
 }
-
-export default App
+export default App;
