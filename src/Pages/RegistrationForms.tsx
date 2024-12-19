@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate } from "react-router-dom"
 import Header from '../Components/Header'
 import * as jose from 'jose'
+import { apiService } from '../services/api'
 
 interface FormErrors {
   name: string
@@ -107,7 +108,14 @@ const RegistrationForm = () => {
     // Proceed with registration logic
     try {
       // Registration API call would go here
-      console.log('Registration Data:', formData)
+      console.log('Registration Data:', formData);
+      try {
+     await apiService.register({...formData});
+        // Handle successful registration
+      } catch (error) {
+        // Handle registration error
+      }
+
     } catch (error) {
       console.error('Registration failed', error)
     }
