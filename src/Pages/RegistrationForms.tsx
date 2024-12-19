@@ -67,6 +67,12 @@ const RegistrationForm = () => {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
+    if(value.length>=1){
+      setShowStrength(true)
+    }
+    else{
+      setShowStrength(false);
+    };
     setFormData(prev => ({...prev, [name]: value}))
 
     switch(name) {
@@ -190,7 +196,6 @@ const RegistrationForm = () => {
                   type="password"
                   name="password"
                   value={formData.password}
-                  onClick={() => setShowStrength(true)}
                   onChange={handleInputChange}
                   className="w-full px-4 py-2 rounded-lg border bg-transparent text-white focus:outline-none focus:ring-2 focus:ring-white/50"
                   required
