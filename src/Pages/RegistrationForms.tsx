@@ -9,7 +9,7 @@ const RegistrationForm = () => {
   const [showStrength, setShowStrength] = useState(false);
   
 
-  const checkPasswordStrength = (pass) => {
+  const checkPasswordStrength = (pass:any) => {
     let score = 0
     // Basic length check
     if (pass.length > 4) score += 25

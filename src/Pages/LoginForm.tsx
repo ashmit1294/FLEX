@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const LoginForm = () => {
       const [password, setPassword] = useState('');
       const [error, setError] = useState('');
+      const navigate=useNavigate();
+
+      const handleSignUp=()=>{
+        navigate('/');
+      }
   return (
     <div className="min-h-screen flex items-center justify-center bg-[url('/nature.jpg')] bg-cover bg-center bg-no-repeat">
       <div className="w-2/3 flex items-center justify-center">
@@ -46,7 +52,8 @@ const LoginForm = () => {
               Log In
             </button>
             <button
-              type="submit"
+              type="button"
+              onClick={handleSignUp}
               className="w-[50%] bg-black/20 text-white py-2 rounded-lg hover:bg-black/50 transition-all transform hover:scale-105 font-semibold backdrop-blur-sm"
             >
               Sign Up
