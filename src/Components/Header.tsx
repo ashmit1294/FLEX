@@ -6,22 +6,21 @@ const Header: React.FC = () => {
     <header className='flex justify-between items-center p-2 bg-transparent shadow-md'>
       <div className="flex items-center justify-between">
         <img 
-          src="/logo.png" 
+          src="./logo1.png" 
           alt="Company Logo" 
-          className="h-10 w-auto"
+          className="h-10 w-20"
         />
-        <h1 className="ml-3 text-xl font-bold">FLEX</h1>
       </div>
 
       {/* Profile Section */}
       <div className="flex items-center space-x-4">
         <div className="flex items-center">
           <img 
-            src="/profile-placeholder.jpg" 
+            src="/profile-placeholder.png" 
             alt="Profile" 
             className="w-10 h-10 rounded-full mr-2"
           />
-          <span className="font-semibold">John Doe</span>
+          |
         </div>
         <Link 
           to="/logout" 

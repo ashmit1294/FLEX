@@ -57,7 +57,7 @@ const handleLogin = () => {
           </div>
 
           <div className="transform hover:scale-105 transition-transform">
-            <label className="block text-white font-semibold drop-shadow-lg">Email</label>
+            <label className="block text-white  font-semibold drop-shadow-lg">Email</label>
             <input
               type="email"
               className="w-full px-4 py-2 rounded-lg border bg-transparent text-white focus:outline-none focus:ring-2 focus:ring-white/50"
