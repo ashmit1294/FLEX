@@ -1,6 +1,7 @@
 import React,{ useState } from 'react'
 import LoginForm from './LoginForm';
 import { useNavigate } from "react-router-dom"; 
+import Header from '../Components/Header';
 
 const RegistrationForm = () => {
   const [password, setPassword] = useState('');
@@ -33,8 +34,9 @@ const handleLogin = () => {
   navigate('/login'); // Navigate to the login route
 };
 
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-[url('/nature.jpg')] bg-cover bg-center bg-no-repeat">
+  return (<div className="min-h-screen bg-[url('/nature.jpg')] bg-cover bg-center bg-no-repeat ">
+      <Header />
+    <div className="min-h-screen flex items-center justify-center">
       <div className="w-2/3 flex items-center justify-center">
         <div className="text-white text-center">
           <h1 className="text-4xl font-bold mb-4">Welcome!</h1>
@@ -49,7 +51,6 @@ const handleLogin = () => {
           <label className="block text-white font-semibold drop-shadow-lg">Name</label>
             <input
               type="text"
-              placeholder='Name'
               className="w-full px-4 py-2 rounded-lg border bg-transparent text-white focus:outline-none focus:ring-2 focus:ring-white/50"
               required
             />
@@ -124,6 +125,7 @@ const handleLogin = () => {
           </form>
         </div>
       </div>
+    </div>
     </div>
   )
 }

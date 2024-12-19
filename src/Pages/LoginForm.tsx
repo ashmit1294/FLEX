@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Header from '../Components/Header';
 
 const LoginForm = () => {
       const [password, setPassword] = useState('');
@@ -9,8 +10,9 @@ const LoginForm = () => {
       const handleSignUp=()=>{
         navigate('/');
       }
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-[url('/nature.jpg')] bg-cover bg-center bg-no-repeat">
+  return (<div className="min-h-screen bg-[url('/nature.jpg')] bg-cover bg-center bg-no-repeat ">
+      <Header />
+      <div className="flex items-center justify-center  min-h-screen ">
       <div className="w-2/3 flex items-center justify-center">
         <div className="text-white text-center">
           <h1 className="text-4xl font-bold mb-4">Ciao Mate!</h1>
@@ -62,6 +64,8 @@ const LoginForm = () => {
         </div>
       </div>
     </div>
+  </div>
+    
   )
 }
 
