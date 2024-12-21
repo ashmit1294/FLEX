@@ -1,12 +1,46 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../Components/Header';
+import { apiService } from '../services/api';
 
 const LoginForm = () => {
       const [password, setPassword] = useState('');
+      const [email, setEmail] = useState('');
       const [error, setError] = useState('');
       const navigate=useNavigate();
 
+      const handleLogin = async (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault();
+      
+        // Basic validation
+        if (!email || !password) {
+          setError('Please enter both email and password');
+          return;
+        }
+      
+        try {
+          // API call to login endpoint
+          const response = await apiService.login({
+            email,
+            password
+          });
+      
+          // Successful login
+          console.log('Login successful', response);
+          
+          // Store user token or session information 
+          localStorage.setItem('userToken', response.token);
+          
+          // Navigate to dashboard or home page
+          navigate('/dashboard');
+      
+        } catch (error: any) {
+          // Handle login errors
+          setError(error.message || 'Login failed. Please try again.');
+          console.error('Login error:', error);
+        }
+      };
+      
       const handleSignUp=()=>{
         navigate('/');
       }
@@ -30,6 +64,9 @@ const LoginForm = () => {
             <input
               type="email"
               className="w-full px-4 py-2 rounded-lg border bg-transparent text-white focus:outline-none focus:ring-2 focus:ring-white/50"
+              onChange={(e) => {
+                setEmail(e.target.value)
+              }}
               required
             />
           </div>
@@ -41,7 +78,7 @@ const LoginForm = () => {
                 onChange={(e) => {
                   setPassword(e.target.value)
                 }}
-                maxLength={8}
+                maxLength={16}
                 required
               />
               {error && <span className="text-red-200 text-sm font-semibold drop-shadow-lg">{error}</span>}
@@ -49,6 +86,7 @@ const LoginForm = () => {
             
             <button
               type="submit"
+              onClick={handleLogin}
               className="w-[50%] bg-black/20 text-white py-2 rounded-lg hover:bg-black/50 transition-all transform hover:scale-105 font-semibold backdrop-blur-sm"
             >
               Log In
